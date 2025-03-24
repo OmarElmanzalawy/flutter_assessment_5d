@@ -1,5 +1,7 @@
 import 'package:assesment_5d/constants/app_colors.dart';
 import 'package:assesment_5d/models/meal_model.dart';
+import 'package:assesment_5d/service/startup_service.dart';
+import 'package:assesment_5d/service/storage_service.dart';
 import 'package:assesment_5d/utils/oval_buttom_clipper.dart';
 import 'package:assesment_5d/view_model/providers/meals_provider.dart';
 import 'package:assesment_5d/widgets/home/calories_circle.dart';
@@ -7,16 +9,35 @@ import 'package:assesment_5d/widgets/home/meal_tile.dart';
 import 'package:assesment_5d/widgets/home/sortButton.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:shimmer/shimmer.dart';
 
-class HomeScreen extends ConsumerWidget {
+class HomeScreen extends ConsumerStatefulWidget {
   HomeScreen({super.key});
 
+  @override
+  ConsumerState<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends ConsumerState<HomeScreen> {
   final _listKey = GlobalKey<AnimatedListState>();
 
   @override
-  Widget build(BuildContext context,WidgetRef ref) {
-    final mealsState = ref.watch(mealsProvider);
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    ref.read(mealsProvider.notifier).setListKey(_listKey);
+    WidgetsBinding.instance.addPostFrameCallback((_){
+      //for testing only
+      // StorageService.clearAll();
+      StartupService.LoadMealsFromStorage(ref);
+    });
+    
+  }
 
+  @override
+  Widget build(BuildContext context) {
+    final mealsState = ref.watch(mealsProvider);
+    print("isloading: ${mealsState.isMealsLoading}");
     final Size size = MediaQuery.sizeOf(context);
     return Scaffold(
       // backgroundColor: Colors.grey.shade50,
@@ -53,7 +74,7 @@ class HomeScreen extends ConsumerWidget {
                       )),
                     const SizedBox(height: 30,),
                     const SizedBox(height: 10,),
-                    CaloriesCircle(),
+                    CaloriesCircle(calorieCount: mealsState.totalCalories,),
                   ],
                 ),
               ),
@@ -71,8 +92,23 @@ class HomeScreen extends ConsumerWidget {
             ],
           ),
         ),
+        
         Expanded(
-          child: AnimatedList.separated(
+          child: AnimatedSwitcher(
+            duration: Duration(milliseconds: 300),
+            child: mealsState.isMealsLoading  
+            ?
+            ListView.separated(
+              padding: EdgeInsets.zero,
+              physics: NeverScrollableScrollPhysics(),
+              itemCount: 2,
+              separatorBuilder: (context, index) => const SizedBox(height: 15,),
+              itemBuilder:(context, index) => ShimmerMealTile(),
+              )
+            // CircularProgressIndicator(color: AppColors.darkGray,)
+            // Text("hello")
+           : 
+           AnimatedList.separated(
             key: _listKey,
             padding: EdgeInsets.zero,
             initialItemCount: mealsState.meals.length + 1,
@@ -80,9 +116,12 @@ class HomeScreen extends ConsumerWidget {
             removedSeparatorBuilder: (context, index, animation) => SizedBox(),
             itemBuilder: (context, index, animation){
               print("index: $index");
-              if(index < mealsState.meals.length){
-                return MealTile(mealIndex: index -1,);
+              print("meals length: ${mealsState.meals.length}");
+              if(index != mealsState.meals.length && mealsState.meals.isNotEmpty){
+                return MealTile(mealIndex: index,);
+                // return Text('hello');
               }
+              //add button
               else{
               return Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 30.0),
@@ -91,7 +130,7 @@ class HomeScreen extends ConsumerWidget {
                   borderRadius: BorderRadius.circular(25),
                   onTap: (){
                     print("click");
-                    ref.read(mealsProvider.notifier).addMeal(MealModel(calories: index, name: "Meal $index",date: DateTime.now(),id: UniqueKey().toString()));
+                    ref.read(mealsProvider.notifier).addMeal(MealModel(calories: 200, name: "Meal $index",date: DateTime.now(),id: UniqueKey().toString()));
                   },
                   child: Container(
                     width: size.width * 0.8,
@@ -108,8 +147,12 @@ class HomeScreen extends ConsumerWidget {
               );
             }
             },
-            ),
+            ), 
+          ),
         )
+          
+                
+        
         
         ]
       ),

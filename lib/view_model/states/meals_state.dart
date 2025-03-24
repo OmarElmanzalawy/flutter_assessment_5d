@@ -5,7 +5,7 @@ class MealsState {
   final bool isMealsLoading;
   //checks if user opened the app for the first time
   final bool isUserFirstTime;
-  late final int totalCalories;
+  late int totalCalories;
 
   MealsState({
     this.meals = const [],
@@ -13,7 +13,7 @@ class MealsState {
     this.totalCalories = 0,
     this.isUserFirstTime = false,
     }){
-    meals.map((meal) => totalCalories += meal.calories);
+     totalCalories = meals.fold(0, (sum,meal) => sum + meal.calories);
   }
 
   MealsState copyWith({

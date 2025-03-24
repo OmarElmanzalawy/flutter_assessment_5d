@@ -8,7 +8,7 @@ class MealModel {
 
   MealModel({required this.name, required this.calories, required this.date,this.imagePath,required this.id});
 
-  Map<String,dynamic> toJson() =>{
+  Map<String,dynamic> toJson() => {
       'id': id,
       'name': name,
       'calories': calories,

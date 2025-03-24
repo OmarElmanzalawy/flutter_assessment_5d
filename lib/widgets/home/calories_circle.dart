@@ -3,7 +3,9 @@ import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 
 class CaloriesCircle extends StatelessWidget {
-  const CaloriesCircle({super.key});
+  const CaloriesCircle({super.key, required this.calorieCount});
+
+  final int calorieCount;
 
   @override
   Widget build(BuildContext context) {
@@ -22,8 +24,15 @@ class CaloriesCircle extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            Text('1500🔥',style: TextStyle(color: AppColors.white,fontSize: 40,fontWeight: FontWeight.bold),),
-                            Text("Calories",style: TextStyle(fontSize: 16,color: AppColors.white),)
+                            TweenAnimationBuilder<int>(
+                              duration: Duration(milliseconds: 300),
+                              tween: IntTween(begin: 0,end: calorieCount),
+                              builder: (context,value,child){
+                                return Text('$value',style: TextStyle(color: AppColors.white,fontSize: 40,fontWeight: FontWeight.bold),);
+                              } 
+                              ),
+                              Text("Calories",style: TextStyle(fontSize: 16,color: AppColors.white),
+                              ),
                           ],
                         ),
                       ),
