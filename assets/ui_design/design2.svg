@@ -1,0 +1,135 @@
+<svg width="390" height="844" viewBox="0 0 390 844" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background Layers -->
+  <rect width="390" height="844" fill="#F5F7FA"/>
+  
+  <!-- Top Blue Section -->
+  <path d="M0 0H390V400C390 400 340 450 195 450C50 450 0 400 0 400V0Z" fill="#2979FF"/>
+  
+  <!-- Status Bar -->
+  <rect x="0" y="0" width="390" height="44" fill="#2979FF"/>
+  
+  <!-- User Profile Section -->
+  <circle cx="45" cy="80" r="25" fill="white"/>
+  <text x="85" y="75" font-family="Arial" font-size="18" font-weight="bold" fill="white">Mona Abhar</text>
+  <text x="85" y="95" font-family="Arial" font-size="14" fill="white" opacity="0.9">Level 6</text>
+  
+  <!-- Streak Counter -->
+  <circle cx="350" cy="80" r="22" fill="white" opacity="0.2"/>
+  <path d="M350 70L353 77H360L355 82L357 89L350 85L343 89L345 82L340 77H347L350 70Z" fill="white"/>
+  <text x="350" y="95" font-family="Arial" font-size="14" font-weight="bold" fill="white" text-anchor="middle">23</text>
+  
+  <!-- Language Selection Carousel -->
+  <g id="language-carousel">
+    <!-- Left Language (Smaller) -->
+    <circle cx="125" cy="160" r="30" fill="white" stroke="white" stroke-width="2"/>
+    <circle cx="125" cy="160" r="28" fill="#006736"/>
+    <path d="M125 132C125 132 115 145 115 160C115 175 125 188 125 188" stroke="white" stroke-width="1.5"/>
+    <path d="M125 132C125 132 135 145 135 160C135 175 125 188 125 188" stroke="white" stroke-width="1.5"/>
+    <circle cx="125" cy="160" r="10" fill="white"/>
+    
+    <!-- Center Language (Active) -->
+    <circle cx="195" cy="160" r="40" fill="white" stroke="white" stroke-width="3"/>
+    <circle cx="195" cy="160" r="37" fill="#FFCC00"/>
+    <circle cx="195" cy="160" r="37" fill="#DD0000" clip-path="path('M195 123 v74 h-74 v-74 z')"/>
+    <path d="M195 123 v74 M158 160 h74" stroke="black" stroke-width="3"/>
+    
+    <!-- Right Language (Smaller) -->
+    <circle cx="265" cy="160" r="30" fill="white" stroke="white" stroke-width="2"/>
+    <rect x="235" y="130" width="60" height="30" fill="#3C3B6E"/>
+    <g>
+      <!-- Simplified US flag stripes -->
+      <rect x="235" y="160" width="60" height="4.6" fill="#B22234"/>
+      <rect x="235" y="169.2" width="60" height="4.6" fill="#B22234"/>
+      <rect x="235" y="178.4" width="60" height="4.6" fill="#B22234"/>
+      <rect x="235" y="187.6" width="60" height="2.4" fill="#B22234"/>
+    </g>
+  </g>
+  
+  <!-- Progress Circle -->
+  <circle cx="195" cy="260" r="70" stroke="white" stroke-width="4" fill="none" stroke-dasharray="440" stroke-dashoffset="110"/>
+  <text x="195" y="260" font-family="Arial" font-size="48" font-weight="bold" fill="white" text-anchor="middle" dominant-baseline="middle">46</text>
+  <text x="195" y="300" font-family="Arial" font-size="16" fill="white" text-anchor="middle">German Words Learned</text>
+  
+  <!-- Action Buttons -->
+  <rect x="135" y="340" width="120" height="40" rx="20" fill="white"/>
+  <text x="195" y="365" font-family="Arial" font-size="16" font-weight="bold" fill="#2979FF" text-anchor="middle">Start Quiz</text>
+  <path d="M155 355L155 365L165 360L155 355Z" fill="#2979FF"/>
+  
+  <rect x="115" y="395" width="160" height="40" rx="20" fill="none" stroke="white" stroke-width="2" stroke-dasharray="4 4"/>
+  <text x="195" y="420" font-family="Arial" font-size="16" fill="white" text-anchor="middle">View Wordlist</text>
+  
+  <!-- New Content Section (replacing cards) -->
+  <!-- Section Header -->
+  <rect x="20" y="480" width="350" height="50" rx="10" fill="white"/>
+  <text x="30" y="510" font-family="Arial" font-size="18" font-weight="bold" fill="#212121">Recent Activity</text>
+  
+  <!-- Recent Activity Timeline -->
+  <g id="recent-activity">
+    <!-- Activity Item 1 -->
+    <rect x="20" y="540" width="350" height="60" rx="15" fill="white" stroke="#E0E0E0" stroke-width="1"/>
+    <circle cx="45" cy="570" r="15" fill="#2979FF"/>
+    <path d="M40 570L45 575L52 568" stroke="white" stroke-width="2"/>
+    <text x="75" y="565" font-family="Arial" font-size="16" font-weight="bold" fill="#212121">Completed Daily Quiz</text>
+    <text x="75" y="585" font-family="Arial" font-size="14" fill="#757575">Today, 10:30 AM</text>
+    <text x="350" y="575" font-family="Arial" font-size="14" font-weight="bold" fill="#2979FF" text-anchor="end">8/10</text>
+  </g>
+  
+  <!-- Learning Stats -->
+  <g id="learning-stats">
+    <rect x="20" y="610" width="350" height="100" rx="15" fill="white" stroke="#E0E0E0" stroke-width="1"/>
+    <text x="40" y="635" font-family="Arial" font-size="16" font-weight="bold" fill="#212121">Learning Statistics</text>
+    
+    <!-- Stats Bars -->
+    <rect x="40" y="650" width="310" height="10" rx="5" fill="#F5F7FA"/>
+    <rect x="40" y="650" width="220" height="10" rx="5" fill="#2979FF"/>
+    <text x="40" y="675" font-family="Arial" font-size="14" fill="#757575">Words Mastered</text>
+    <text x="350" y="675" font-family="Arial" font-size="14" font-weight="bold" fill="#212121" text-anchor="end">46/65</text>
+    
+    <rect x="40" y="685" width="310" height="10" rx="5" fill="#F5F7FA"/>
+    <rect x="40" y="685" width="155" height="10" rx="5" fill="#FFC107"/>
+    <text x="40" y="705" font-family="Arial" font-size="14" fill="#757575">Daily Goal Progress</text>
+    <text x="350" y="705" font-family="Arial" font-size="14" font-weight="bold" fill="#212121" text-anchor="end">50%</text>
+  </g>
+  
+  <!-- Daily Challenge -->
+  <g id="daily-challenge">
+    <rect x="20" y="720" width="350" height="70" rx="15" fill="#E3F2FD" stroke="#BBDEFB" stroke-width="1"/>
+    <text x="40" y="745" font-family="Arial" font-size="16" font-weight="bold" fill="#1565C0">Daily Challenge</text>
+    <text x="40" y="770" font-family="Arial" font-size="14" fill="#1565C0">Learn 5 new German words today</text>
+    <rect x="280" y="740" width="70" height="30" rx="15" fill="#2979FF"/>
+    <text x="315" y="760" font-family="Arial" font-size="14" font-weight="bold" fill="white" text-anchor="middle">Start</text>
+  </g>
+  
+  <!-- Bottom Navigation Bar -->
+  <g id="bottom-nav">
+    <rect x="0" y="800" width="390" height="44" fill="white" stroke="#E0E0E0" stroke-width="1" stroke-opacity="0.5"/>
+    
+    <!-- Add Words Tab -->
+    <g id="tab-add-words">
+      <rect x="0" y="800" width="130" height="44" fill="white"/>
+      <circle cx="65" cy="815" r="12" fill="#2979FF" opacity="0.1"/>
+      <text x="65" y="820" font-family="Arial" font-size="18" fill="#2979FF" text-anchor="middle">Aa</text>
+      <text x="65" y="838" font-family="Arial" font-size="10" fill="#2979FF" text-anchor="middle">Add Words</text>
+    </g>
+    
+    <!-- Target Language Tab -->
+    <g id="tab-target-language">
+      <rect x="130" y="800" width="130" height="44" fill="white"/>
+      <circle cx="195" cy="815" r="12" fill="#757575" opacity="0.1"/>
+      <text x="195" y="820" font-family="Arial" font-size="18" fill="#757575" text-anchor="middle">文</text>
+      <text x="195" y="838" font-family="Arial" font-size="10" fill="#757575" text-anchor="middle">Target Language</text>
+    </g>
+    
+    <!-- Profile Tab -->
+    <g id="tab-profile">
+      <rect x="260" y="800" width="130" height="44" fill="white"/>
+      <circle cx="325" cy="815" r="12" fill="#757575" opacity="0.1"/>
+      <circle cx="325" cy="815" r="8" stroke="#757575" stroke-width="1.5" fill="none"/>
+      <path d="M315 825C315 825 325 822 335 825" stroke="#757575" stroke-width="1.5" fill="none"/>
+      <text x="325" y="838" font-family="Arial" font-size="10" fill="#757575" text-anchor="middle">Profile</text>
+    </g>
+    
+    <!-- Home Indicator -->
+    <rect x="155" y="835" width="80" height="5" rx="2.5" fill="#DDDDDD"/>
+  </g>
+</svg>
