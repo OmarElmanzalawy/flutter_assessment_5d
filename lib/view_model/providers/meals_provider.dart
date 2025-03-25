@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:assesment_5d/constants/app_enums.dart';
 import 'package:assesment_5d/models/meal_model.dart';
 import 'package:assesment_5d/service/storage_service.dart';
 import 'package:assesment_5d/view_model/states/meals_state.dart';
@@ -43,7 +44,7 @@ class MealsNotifier extends StateNotifier<MealsState>{
       index,
       (context, animation) => SizeTransition(
         sizeFactor: animation,
-        child: MealTile(mealIndex: index),
+        child: MealTile(mealIndex: index,model: meal,),
       ),
       duration: const Duration(milliseconds: 300),
     );
@@ -64,8 +65,43 @@ class MealsNotifier extends StateNotifier<MealsState>{
     } else {
       state = state.copyWith(isMealsLoading: false,meals: []);
     }
-
   }
 
+  void updateSortOption(MealSortOptions? option){
+    state = state.copyWith(sortOptions: option);    
+    if (option != null) {
+      switch (option) {
+        case MealSortOptions.name:
+          sortByName();
+          break;
+        case MealSortOptions.calories:
+          sortByCalories();
+          break;
+        case MealSortOptions.date:
+          sortByDate();
+          break;
+      }
+    }
+  }
 
+  //ascending order
+  void sortByName(){
+    final sortedMeals = [...state.meals];
+    sortedMeals.sort((a, b) => a.name.toLowerCase().compareTo(b.name.toLowerCase()));
+    state = state.copyWith(meals: sortedMeals);
+  }
+  
+  //decending order sort by calories
+  void sortByCalories(){
+    final sortedMeals = [...state.meals];
+    sortedMeals.sort((a, b) => a.calories.compareTo(b.calories));
+    state = state.copyWith(meals: sortedMeals.reversed.toList());
+  }
+  
+  //ascending order 
+  void sortByDate(){
+    final sortedMeals = [...state.meals];
+    sortedMeals.sort((a, b) => b.date.compareTo(a.date));
+    state = state.copyWith(meals: sortedMeals);
+  }
 }

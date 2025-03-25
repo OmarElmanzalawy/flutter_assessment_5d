@@ -1,6 +1,6 @@
 import 'package:assesment_5d/constants/app_colors.dart';
 import 'package:assesment_5d/constants/app_enums.dart';
-import 'package:assesment_5d/view_model/providers/sort_meal_provider.dart';
+import 'package:assesment_5d/view_model/providers/meals_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -9,7 +9,7 @@ class Sortbutton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final sortProvider = ref.watch(sortMealProvider);
+    final sortState = ref.watch(mealsProvider.select((s)=> s.sortOptions));
     return Container(
       height: 30,
       decoration: BoxDecoration(
@@ -22,7 +22,7 @@ class Sortbutton extends ConsumerWidget {
           elevation: 0,
           iconEnabledColor: AppColors.white,
           underline: const SizedBox(),
-          value: sortProvider,
+          value: sortState,
           hint: Text("Sort by", style: TextStyle(color: AppColors.white)),
           style: TextStyle(color: AppColors.white),
           items: [
@@ -59,7 +59,7 @@ class Sortbutton extends ConsumerWidget {
             ];
           },
           onChanged: (value) {
-            ref.read(sortMealProvider.notifier).state = value;
+            ref.read(mealsProvider.notifier).updateSortOption(value);
           },
         ),
       ),

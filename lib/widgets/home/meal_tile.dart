@@ -1,13 +1,16 @@
 import 'package:assesment_5d/constants/app_colors.dart';
+import 'package:assesment_5d/models/meal_model.dart';
 import 'package:assesment_5d/view_model/providers/meals_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shimmer/shimmer.dart';
+import 'package:timeago/timeago.dart' as timeago;
 
 class MealTile extends ConsumerWidget {
-  const MealTile({super.key,required this.mealIndex});
+  const MealTile({super.key,required this.mealIndex,required this.model,});
 
   final int mealIndex;
+  final MealModel model;
 
   @override
   Widget build(BuildContext context,WidgetRef ref) {
@@ -32,7 +35,7 @@ class MealTile extends ConsumerWidget {
                 borderRadius: BorderRadius.circular(12),
                 // color: Colors.red,
                 image: DecorationImage(
-                  image: AssetImage('assets/images/burger1.jpg',),
+                  image: AssetImage(model.imagePath ?? 'assets/images/meal_image_placeholder.png'),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -45,7 +48,7 @@ class MealTile extends ConsumerWidget {
                   const SizedBox(height: 20,),
                   Row(
                     children: [
-                      Text('Smashed Burger',style: TextStyle(fontSize: 16,fontWeight: FontWeight.w500),),
+                      Text(model.name,style: TextStyle(fontSize: 16,fontWeight: FontWeight.w500),),
                       const Spacer(),
                       InkWell(
                         onTap: (){
@@ -57,12 +60,12 @@ class MealTile extends ConsumerWidget {
                     ],
                   ),
                   const SizedBox(height: 10,),
-                  Text('1 hour ago',style: TextStyle(color: AppColors.darkGray),),
+                  Text(timeago.format(model.date),style: TextStyle(color: AppColors.darkGray),),
                   Spacer(),
                   Row(
                     children: [
                       Spacer(),
-                      Text("200 Calories",style: TextStyle(fontSize: 17,fontWeight: FontWeight.bold,color: AppColors.primaryOrange),),
+                      Text("${model.calories} Calories",style: TextStyle(fontSize: 17,fontWeight: FontWeight.bold,color: AppColors.primaryOrange),),
                       const SizedBox(width: 10,),
                     ],
                   ),

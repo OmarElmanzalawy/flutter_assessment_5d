@@ -1,7 +1,7 @@
 import 'package:assesment_5d/constants/app_colors.dart';
+import 'package:assesment_5d/constants/screen_keys.dart';
 import 'package:assesment_5d/models/meal_model.dart';
 import 'package:assesment_5d/service/startup_service.dart';
-import 'package:assesment_5d/service/storage_service.dart';
 import 'package:assesment_5d/utils/oval_buttom_clipper.dart';
 import 'package:assesment_5d/view_model/providers/meals_provider.dart';
 import 'package:assesment_5d/widgets/home/calories_circle.dart';
@@ -9,7 +9,7 @@ import 'package:assesment_5d/widgets/home/meal_tile.dart';
 import 'package:assesment_5d/widgets/home/sortButton.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:shimmer/shimmer.dart';
+import 'package:go_router/go_router.dart';
 
 class HomeScreen extends ConsumerStatefulWidget {
   HomeScreen({super.key});
@@ -66,7 +66,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                           Spacer(),
                           InkWell(
                             onTap: () {
-                              print("add click");
+                              context.push(ScreenKeys.addMealScreen);
                             },
                             child: Icon(Icons.add,color: AppColors.white,size: 30),
                             ),
@@ -118,7 +118,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               print("index: $index");
               print("meals length: ${mealsState.meals.length}");
               if(index != mealsState.meals.length && mealsState.meals.isNotEmpty){
-                return MealTile(mealIndex: index,);
+                return MealTile(mealIndex: index,model: mealsState.meals[index],);
                 // return Text('hello');
               }
               //add button
@@ -130,7 +130,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   borderRadius: BorderRadius.circular(25),
                   onTap: (){
                     print("click");
-                    ref.read(mealsProvider.notifier).addMeal(MealModel(calories: 200, name: "Meal $index",date: DateTime.now(),id: UniqueKey().toString()));
+                    context.push(ScreenKeys.addMealScreen);
                   },
                   child: Container(
                     width: size.width * 0.8,
@@ -149,11 +149,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             },
             ), 
           ),
-        )
-          
-                
-        
-        
+        ),
         ]
       ),
     );

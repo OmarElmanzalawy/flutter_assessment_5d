@@ -2,12 +2,15 @@ import 'package:assesment_5d/constants/app_theme.dart';
 import 'package:assesment_5d/constants/screen_keys.dart';
 import 'package:assesment_5d/screens/add_meal_screen.dart';
 import 'package:assesment_5d/screens/home_screen.dart';
+import 'package:assesment_5d/service/startup_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-void main() {
+void main() async{
+  await StartupService.init();
   runApp(ProviderScope(child: MainApp()));
+  
 }
 
 class MainApp extends StatelessWidget {
