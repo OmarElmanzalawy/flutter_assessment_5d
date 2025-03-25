@@ -63,12 +63,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                         children: [
                           Text('Meal Tracker',style: TextStyle(color: AppColors.white,fontSize: 24,fontWeight: FontWeight.bold),),
                           Spacer(),
-                          InkWell(
-                            onTap: () {
-                              context.push(ScreenKeys.addMealScreen);
-                            },
-                            child: Icon(Icons.add,color: AppColors.white,size: 30),
-                            ),
+                          Image.asset('assets/images/logo.png',width: 25,height: 20,fit: BoxFit.cover,),
                         ],
                       )),
                     const SizedBox(height: 30,),
