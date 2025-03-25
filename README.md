@@ -1,17 +1,13 @@
 # Meal Tracking App
 
 ## Tools & Frameworks
-
 - **Flutter**: Cross-platform UI framework for building natively compiled applications
 - **Riverpod**: State management solution for Flutter applications
 - **GoRouter**: Declarative routing package for Flutter
 - **SharedPreferences**: Local storage for persisting meal data
 - **ImagePicker**: Package for selecting images from device gallery or camera
 
-## Running the App
-
-1. Ensure you have Flutter installed on your machine. If not, follow the [official installation guide](https://flutter.dev/docs/get-started/install)
-
+## Getting Started
 2. Clone the repository:
    ```bash
    git clone <repository-url>
@@ -39,3 +35,32 @@ The app implements a responsive design strategy to ensure optimal user experienc
 - **Flexible Grid System**: Implementing an adaptive grid layout for meal items
 
 This approach ensures the app maintains its functionality and visual appeal across various devices, from mobile phones to tablets.
+
+## APK Installation Instructions
+
+### System Requirements
+- Android 5.0 (Lollipop) or higher
+- At least 50MB of free storage space
+
+### Installation Steps
+
+1. **Download the APK**
+   - Download the APK file from the releases section of this repository
+   - Alternatively, you can build the APK yourself using `flutter build apk`
+
+2. **Enable Unknown Sources**
+   - Go to your device's Settings
+   - Navigate to Security or Privacy settings
+   - Enable "Install from Unknown Sources" or "Install Unknown Apps"
+
+3. **Install the App**
+   - Locate the downloaded APK file using your file manager
+   - Tap on the APK file to start installation
+   - Review the requested permissions and tap "Install"
+   - Wait for the installation to complete
+   - Tap "Open" to launch the app
+
+### Required Permissions
+- Storage access (for meal images)
+- Camera access (for taking meal photos)
+
