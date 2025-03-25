@@ -9,14 +9,15 @@ class CaloriesCircle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final Size size = MediaQuery.sizeOf(context);
     return DottedBorder(
                       borderType: BorderType.Circle,
                       strokeWidth: 5,
                       color: AppColors.white,
                       dashPattern: [4,12],
                       child: Container(
-                        width: 200,
-                        height: 200,
+                        width: size.width * 0.53,
+                        height: size.height * 0.23,
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                         ),

@@ -1,6 +1,5 @@
 import 'package:assesment_5d/constants/app_colors.dart';
 import 'package:assesment_5d/constants/screen_keys.dart';
-import 'package:assesment_5d/models/meal_model.dart';
 import 'package:assesment_5d/service/startup_service.dart';
 import 'package:assesment_5d/utils/oval_buttom_clipper.dart';
 import 'package:assesment_5d/view_model/providers/meals_provider.dart';
@@ -10,6 +9,7 @@ import 'package:assesment_5d/widgets/home/sortButton.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+
 
 class HomeScreen extends ConsumerStatefulWidget {
   HomeScreen({super.key});
@@ -40,16 +40,15 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     print("isloading: ${mealsState.isMealsLoading}");
     final Size size = MediaQuery.sizeOf(context);
     return Scaffold(
-      // backgroundColor: Colors.grey.shade50,
       body: Column(
         children: [
           ClipPath(
           clipper: OvalBottomClipper(),
           child: Stack(
-            // alignment: Alignment.center, 
             children: [
               Container(
-              height: 380,
+              height: size.height * 0.44,
+              // height: 380,
               color: AppColors.primaryOrange,
             ),
             Center(
@@ -119,7 +118,6 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               print("meals length: ${mealsState.meals.length}");
               if(index != mealsState.meals.length && mealsState.meals.isNotEmpty){
                 return MealTile(mealIndex: index,model: mealsState.meals[index],);
-                // return Text('hello');
               }
               //add button
               else{
