@@ -36,16 +36,12 @@ The app implements a responsive design strategy to ensure optimal user experienc
 
 This approach ensures the app maintains its functionality and visual appeal across various devices, from mobile phones to tablets.
 
-## APK Installation Instructions
-
-### System Requirements
-- Android 5.0 (Lollipop) or higher
-- At least 50MB of free storage space
+## How to run the App
 
 ### Installation Steps
 
 1. **Download the APK**
-   - Download the APK file from the releases section of this repository
+   - Download the APK file
    - Alternatively, you can build the APK yourself using `flutter build apk`
 
 2. **Enable Unknown Sources**
