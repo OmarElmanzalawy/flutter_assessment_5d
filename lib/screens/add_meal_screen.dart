@@ -21,12 +21,10 @@ class AddMealScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context,WidgetRef ref) {
     final Size size = MediaQuery.sizeOf(context);
-    print('rebuild');
     final addMealState = ref.watch(addMealProvider);
 
     final selectedImage = addMealState.selectedImage;
 
-    print(selectedImage);
 
     if (_dateController.text.isEmpty) {
       _dateController.text = addMealState.formattedTime;
@@ -80,7 +78,6 @@ class AddMealScreen extends ConsumerWidget {
                             child: IconButton(
                               icon: Icon(Icons.close, size: 18, color: Colors.black),
                               onPressed: () {
-                                print('remove image');
                                   ref.read(addMealProvider.notifier).removeImage();
                               },
                             ),

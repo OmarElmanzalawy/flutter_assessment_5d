@@ -16,7 +16,6 @@ class OnboardingScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context,WidgetRef ref) {
-    print('rebuild');
     final bool isLastPage = ref.watch(isLastPageProvider);
     final Size size = MediaQuery.sizeOf(context);
     return Scaffold(

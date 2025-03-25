@@ -1,7 +1,4 @@
-
-
 import 'dart:io';
-
 import 'package:assesment_5d/constants/app_colors.dart';
 import 'package:assesment_5d/view_model/states/add_meal_state.dart';
 import 'package:flutter/material.dart';
@@ -9,7 +6,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
 
-final addMealProvider = StateNotifierProvider<AddMealNotifier,AddMealState>((ref)=> AddMealNotifier());
+final addMealProvider = StateNotifierProvider.autoDispose<AddMealNotifier,AddMealState>((ref)=> AddMealNotifier());
 
 class AddMealNotifier extends StateNotifier<AddMealState>{
 

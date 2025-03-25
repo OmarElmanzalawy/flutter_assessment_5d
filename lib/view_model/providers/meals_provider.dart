@@ -24,9 +24,12 @@ class MealsNotifier extends StateNotifier<MealsState>{
   //add a meal to the list
   void addMeal(MealModel newMeal)async{
     final pref = await SharedPreferences.getInstance();
-    final udpatedMealList = [...state.meals,newMeal]; 
+    final udpatedMealList = [...state.meals,newMeal];
     StorageService.saveMealsToStorage(udpatedMealList);
     state = state.copyWith(meals: udpatedMealList);
+    if(state.sortOptions != null){
+      updateSortOption(state.sortOptions);
+    }
     
     listKey?.currentState?.insertItem(
       state.meals.length - 1,

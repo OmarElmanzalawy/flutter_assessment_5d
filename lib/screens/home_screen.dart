@@ -10,9 +10,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-
 class HomeScreen extends ConsumerStatefulWidget {
-  HomeScreen({super.key});
+  const HomeScreen({super.key});
 
   @override
   ConsumerState<HomeScreen> createState() => _HomeScreenState();
@@ -37,7 +36,6 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final mealsState = ref.watch(mealsProvider);
-    print("isloading: ${mealsState.isMealsLoading}");
     final Size size = MediaQuery.sizeOf(context);
     return Scaffold(
       body: Column(
@@ -109,8 +107,6 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             separatorBuilder: (context, index, animation) => index <= mealsState.meals.length ? const SizedBox(height: 15,) : const SizedBox(height: 0,),
             removedSeparatorBuilder: (context, index, animation) => SizedBox(),
             itemBuilder: (context, index, animation){
-              print("index: $index");
-              print("meals length: ${mealsState.meals.length}");
               if(index != mealsState.meals.length && mealsState.meals.isNotEmpty){
                 return MealTile(mealIndex: index,model: mealsState.meals[index],);
               }
@@ -122,7 +118,6 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   // radius: 25,
                   borderRadius: BorderRadius.circular(25),
                   onTap: (){
-                    print("click");
                     context.push(ScreenKeys.addMealScreen);
                   },
                   child: Container(
