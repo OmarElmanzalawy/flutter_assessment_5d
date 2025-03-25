@@ -29,7 +29,7 @@ class AddMealNotifier extends StateNotifier<AddMealState>{
   }
 
   void removeImage(){
-    state = state.copyWith();
+    state = state.copyWith(selectedImage: null);
   }
 
   Future<void> selectDate(BuildContext context, TextEditingController dateController) async {

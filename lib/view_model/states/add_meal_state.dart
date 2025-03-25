@@ -3,10 +3,9 @@ import 'dart:io';
 class AddMealState {
   final File? selectedImage;
   final DateTime selectedDateTime;
-  final bool isImagePicked;
   late final String formattedTime;
 
-  AddMealState({this.selectedImage,this.isImagePicked = false,DateTime? selectedDateTime}) : selectedDateTime = selectedDateTime ?? DateTime.now(){
+  AddMealState({this.selectedImage,DateTime? selectedDateTime}) : selectedDateTime = selectedDateTime ?? DateTime.now(){
 
     formattedTime = '${this.selectedDateTime.day}/${this.selectedDateTime.month}/${this.selectedDateTime.year} ${this.selectedDateTime.hour.toString().padLeft(2, '0')}:${this.selectedDateTime.minute.toString().padLeft(2, '0')}';
 
@@ -18,9 +17,8 @@ class AddMealState {
     bool? isImagePicked,
   }){
     return AddMealState(
-      selectedImage: selectedImage ?? this.selectedImage,
+      selectedImage: selectedImage,
       selectedDateTime: selectedDateTime ?? this.selectedDateTime,
-      isImagePicked: isImagePicked ?? this.isImagePicked
       );
   }
 

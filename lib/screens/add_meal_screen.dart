@@ -26,10 +26,12 @@ class AddMealScreen extends ConsumerWidget {
 
     final selectedImage = addMealState.selectedImage;
 
+    print(selectedImage);
+
     if (_dateController.text.isEmpty) {
       _dateController.text = addMealState.formattedTime;
     }
-    
+
     return Scaffold(
       // extendBodyBehindAppBar: true,
         appBar: AppBar(backgroundColor: AppColors.primaryOrange,iconTheme: IconThemeData(color: AppColors.white),title: Text("Add a meal",style: TextStyle(color: Colors.white),),),
@@ -78,6 +80,7 @@ class AddMealScreen extends ConsumerWidget {
                             child: IconButton(
                               icon: Icon(Icons.close, size: 18, color: Colors.black),
                               onPressed: () {
+                                print('remove image');
                                   ref.read(addMealProvider.notifier).removeImage();
                               },
                             ),
